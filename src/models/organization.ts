@@ -1,5 +1,5 @@
-import { Entity, Column } from 'typeorm';
-import { IsAlphanumeric, IsDate, IsEmail, IsString } from 'class-validator'
+import { Entity, Column, OneToOne, JoinColumn, Or } from 'typeorm';
+import { IsAlphanumeric, IsEmail, IsString } from 'class-validator'
 import { BaseEntity } from './commons';
 
 
@@ -28,11 +28,18 @@ export class OrganizationEntity extends BaseEntity {
     })
     @IsString()
     password: string;
+
+    @OneToOne(() => OrganizationSecurityKeys, security_keys => security_keys.organization)
+    security_keys: OrganizationSecurityKeys
 }
 
 
 @Entity("orgnaization_security_keys")
 export class OrganizationSecurityKeys extends BaseEntity {
+
+    @OneToOne(() => OrganizationEntity, (organization) => organization.security_keys)
+    @JoinColumn()
+    organization: OrganizationEntity
 
     @Column({
         type: "varchar",
@@ -49,7 +56,5 @@ export class OrganizationSecurityKeys extends BaseEntity {
     })
     @IsAlphanumeric()
     secret_key: string;
-
-    
 
 }
