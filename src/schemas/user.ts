@@ -19,5 +19,5 @@ export const userUpdateSchema = userCreateSchema.optional();
 export const userResponseSchema = userSchema.omit({ password: true });
 
 export type UserCreateType = ReturnType<typeof userCreateSchema.parse>;
-export type USerUpdateType = ReturnType<typeof userUpdateSchema.parse>;
+export type UserUpdateType = ReturnType<typeof userUpdateSchema.parse>;
 export type UserResponseType = ReturnType<typeof userResponseSchema.parse>;
