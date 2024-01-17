@@ -1,3 +1,3 @@
-import { OrganizationEntity, OrganizationSecurityKeys } from './organization';
+import { UserEntity, UserSecurityKeysEntity } from './user';
 
-export { OrganizationEntity, OrganizationSecurityKeys }
+export { UserEntity, UserSecurityKeysEntity }

@@ -1,10 +1,10 @@
 import { Entity, Column, OneToOne, JoinColumn, Or } from 'typeorm';
-import { IsAlphanumeric, IsEmail, IsString } from 'class-validator'
+import { IsAlphanumeric, IsBoolean, IsEmail, IsString } from 'class-validator'
 import { BaseEntity } from './commons';
 
 
-@Entity("organizations")
-export class OrganizationEntity extends BaseEntity {
+@Entity("users")
+export class UserEntity extends BaseEntity {
 
     @Column({
         type: "varchar",
@@ -21,7 +21,6 @@ export class OrganizationEntity extends BaseEntity {
     @IsEmail()
     email: string;
 
-
     @Column({
         type: "varchar",
         length: 250
@@ -29,17 +28,24 @@ export class OrganizationEntity extends BaseEntity {
     @IsString()
     password: string;
 
-    @OneToOne(() => OrganizationSecurityKeys, security_keys => security_keys.organization)
-    security_keys: OrganizationSecurityKeys
+    @Column({
+        type: "boolean",
+        default: false
+    })
+    @IsBoolean()
+    isVerified: boolean;
+
+    @OneToOne(() => UserSecurityKeysEntity, (security_keys) => security_keys.user)
+    security_keys: UserSecurityKeysEntity;
 }
 
 
-@Entity("orgnaization_security_keys")
-export class OrganizationSecurityKeys extends BaseEntity {
+@Entity("user_security_keys")
+export class UserSecurityKeysEntity extends BaseEntity {
 
-    @OneToOne(() => OrganizationEntity, (organization) => organization.security_keys)
+    @OneToOne(() => UserEntity, (user) => user.security_keys)
     @JoinColumn()
-    organization: OrganizationEntity
+    user: UserEntity;
 
     @Column({
         type: "varchar",
