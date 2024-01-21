@@ -1,6 +1,7 @@
 import { z } from "zod"
 
 
+
 export const userSchema = z.object({
     id: z.string().uuid({ message: "Invalid UUID" }),
     name: z.string(),
@@ -21,3 +22,4 @@ export const userResponseSchema = userSchema.omit({ password: true });
 export type UserCreateType = ReturnType<typeof userCreateSchema.parse>;
 export type UserUpdateType = ReturnType<typeof userUpdateSchema.parse>;
 export type UserResponseType = ReturnType<typeof userResponseSchema.parse>;
+export type PaginatedUserResponseType = ApiPaginatedResponse<Array<UserResponseType>>;
