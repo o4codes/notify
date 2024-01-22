@@ -1,0 +1,124 @@
+{
+    "date": "Mon Jan 22 2024 12:48:11 GMT+0100 (West Africa Standard Time)",
+    "error": {
+        "code": "MODULE_NOT_FOUND",
+        "requireStack": [
+            "/home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js",
+            "/home/adam/Documents/Projects/work/mine/notify/build/src/app.js",
+            "/home/adam/Documents/Projects/work/mine/notify/build/src/server.js"
+        ]
+    },
+    "exception": true,
+    "level": "error",
+    "message": "uncaughtException: Cannot find module 'src/configs'\nRequire stack:\n- /home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/app.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/server.js\nError: Cannot find module 'src/configs'\nRequire stack:\n- /home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/app.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/server.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:939:15)\n    at Module._load (node:internal/modules/cjs/loader:780:27)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)\n    at require (node:internal/modules/cjs/helpers:102:18)\n    at Object.<anonymous> (/home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js:4:19)\n    at Module._compile (node:internal/modules/cjs/loader:1105:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)\n    at Module.load (node:internal/modules/cjs/loader:981:32)\n    at Module._load (node:internal/modules/cjs/loader:827:12)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)",
+    "os": {
+        "loadavg": [
+            5.9,
+            5.13,
+            4.77
+        ],
+        "uptime": 14390.67
+    },
+    "process": {
+        "argv": [
+            "/home/adam/.nvm/versions/node/v18.1.0/bin/node",
+            "/home/adam/Documents/Projects/work/mine/notify/build/src/server.js"
+        ],
+        "cwd": "/home/adam/Documents/Projects/work/mine/notify",
+        "execPath": "/home/adam/.nvm/versions/node/v18.1.0/bin/node",
+        "gid": 1000,
+        "memoryUsage": {
+            "arrayBuffers": 209175,
+            "external": 810593,
+            "heapTotal": 93958144,
+            "heapUsed": 64161368,
+            "rss": 151781376
+        },
+        "pid": 805776,
+        "uid": 1000,
+        "version": "v18.1.0"
+    },
+    "stack": "Error: Cannot find module 'src/configs'\nRequire stack:\n- /home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/app.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/server.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:939:15)\n    at Module._load (node:internal/modules/cjs/loader:780:27)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)\n    at require (node:internal/modules/cjs/helpers:102:18)\n    at Object.<anonymous> (/home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js:4:19)\n    at Module._compile (node:internal/modules/cjs/loader:1105:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)\n    at Module.load (node:internal/modules/cjs/loader:981:32)\n    at Module._load (node:internal/modules/cjs/loader:827:12)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)",
+    "trace": [
+        {
+            "column": 15,
+            "file": "node:internal/modules/cjs/loader",
+            "function": "Module._resolveFilename",
+            "line": 939,
+            "method": "_resolveFilename",
+            "native": false
+        },
+        {
+            "column": 27,
+            "file": "node:internal/modules/cjs/loader",
+            "function": "Module._load",
+            "line": 780,
+            "method": "_load",
+            "native": false
+        },
+        {
+            "column": 19,
+            "file": "node:internal/modules/cjs/loader",
+            "function": "Module.require",
+            "line": 1005,
+            "method": "require",
+            "native": false
+        },
+        {
+            "column": 18,
+            "file": "node:internal/modules/cjs/helpers",
+            "function": "require",
+            "line": 102,
+            "method": null,
+            "native": false
+        },
+        {
+            "column": 19,
+            "file": "/home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js",
+            "function": null,
+            "line": 4,
+            "method": null,
+            "native": false
+        },
+        {
+            "column": 14,
+            "file": "node:internal/modules/cjs/loader",
+            "function": "Module._compile",
+            "line": 1105,
+            "method": "_compile",
+            "native": false
+        },
+        {
+            "column": 10,
+            "file": "node:internal/modules/cjs/loader",
+            "function": "Module._extensions..js",
+            "line": 1159,
+            "method": ".js",
+            "native": false
+        },
+        {
+            "column": 32,
+            "file": "node:internal/modules/cjs/loader",
+            "function": "Module.load",
+            "line": 981,
+            "method": "load",
+            "native": false
+        },
+        {
+            "column": 12,
+            "file": "node:internal/modules/cjs/loader",
+            "function": "Module._load",
+            "line": 827,
+            "method": "_load",
+            "native": false
+        },
+        {
+            "column": 19,
+            "file": "node:internal/modules/cjs/loader",
+            "function": "Module.require",
+            "line": 1005,
+            "method": "require",
+            "native": false
+        }
+    ]
+}

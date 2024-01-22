@@ -1,8 +1,8 @@
 import { RegisterRoutes } from "../build/routes";
 import express, { json, urlencoded, Response as ExResponse, Request as ExRequest } from "express";
 import swaggerUi from "swagger-ui-express";
-import { logger } from "./configs/logger";
-import { httpLogger } from "./configs/httpLogger";
+import { logger, httpLogger } from "./configs";
+import { errorHandler, notFoundHandler } from "./middlewares/errorHandler";
 
 export const app = express();
 app.use(httpLogger);
@@ -23,3 +23,6 @@ app.use("/api/docs", swaggerUi.serve, async (_req: ExRequest, res: ExResponse) =
 });
 
 RegisterRoutes(app);
+
+app.use(notFoundHandler)
+app.use(errorHandler)

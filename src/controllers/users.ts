@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Route, Query } from "tsoa";
+import { Body, Controller, Get, Post, Route, Query, Response } from "tsoa";
 import { UserService } from "../services/user";
 import { PaginatedUserResponseType, UserCreateType, UserResponseType } from "../schemas/user";
 import { ApiResponse, ResponseStatus } from "../schemas/commons";
@@ -22,7 +22,7 @@ export class UserController extends Controller {
         }
     }
 
-
+    @Response<ApiResponse>('default', "Error Occured")
     @Post()
     public async createUser(
         @Body() body: UserCreateType

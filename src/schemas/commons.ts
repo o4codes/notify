@@ -3,7 +3,7 @@ export enum ResponseStatus {
     FAILURE = 'failure'
 }
 
-export interface ApiResponse<T> {
+export interface ApiResponse<T=undefined> {
     status: ResponseStatus,
     message: string
     data?: T
