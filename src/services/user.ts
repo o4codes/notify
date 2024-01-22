@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 import { ApiError, MainDataSource } from "../configs";
 import { UserEntity, UserSecurityKeysEntity } from "../models";
-import { userCreateSchema, userResponseSchema, userUpdateSchema, UserResponseType, PaginatedUserResponseType } from "../schemas/user";
+import { userCreateSchema, userResponseSchema, userUpdateSchema, UserResponseType} from "../schemas/user";
 import { hashPassword } from "./utils";
 
 export class UserService {
@@ -33,14 +33,7 @@ export class UserService {
             skip: offset
         });
         const parsedUsers = userResponseSchema.array().parse(users);
-        const paginatedResponse: PaginatedUserResponseType = {
-            status: "success",
-            message: "List of Users",
-            size: parsedUsers.length,
-            page: 1,
-            data: parsedUsers
-        };
-        return paginatedResponse;
+        return parsedUsers
     }
 
     async get(id: string){

@@ -1,10 +1,15 @@
-interface ApiResponse<T> {
-    status: 'success' | 'error',
+export enum ResponseStatus {
+    SUCCESS = 'success',
+    FAILURE = 'failure'
+}
+
+export interface ApiResponse<T> {
+    status: ResponseStatus,
     message: string
     data?: T
 }
 
-interface ApiPaginatedResponse<T> extends ApiResponse<T> {
+export interface ApiPaginatedResponse<T> extends ApiResponse<T> {
     size: number
     page: number
 }

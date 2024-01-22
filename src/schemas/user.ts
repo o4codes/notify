@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { ApiPaginatedResponse } from "./commons";
 
 
 
@@ -14,6 +15,7 @@ export const userSchema = z.object({
     createdDateTime: z.date(),
     updatedDateTime: z.date().nullish(),
 });
+
 
 export const userCreateSchema = userSchema.omit({ id: true, isVerified: true, createdDateTime: true, updatedDateTime: true });
 export const userUpdateSchema = userCreateSchema.optional();
