@@ -1,8 +1,22 @@
 {
     "entryFile": "src/app.ts",
     "noImplicitAdditionalProperties": "throw-on-extras",
-    "controllerPathGlobs": ["src/controllers/*.ts"],
+    "controllerPathGlobs": [
+        "src/controllers/*.ts"
+    ],
     "spec": {
+        "securityDefinitions": {
+            "basic": {
+                "type": "apiKey",
+                "name": "authorization",
+                "in": "header"
+            },
+            "bearer": {
+                "type": "apiKey",
+                "name": "authorization",
+                "in": "header"
+            }
+        },
         "outputDirectory": "build",
         "specVersion": 3
     },
