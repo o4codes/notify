@@ -4,6 +4,10 @@ dotenv.config();
 
 
 class Settings {
+    static get port(): string {
+        return process.env.API_PORT || '3000';
+    }
+
     static get isDebug(): boolean {
         return JSON.parse(process.env.IS_DEBUG || 'true');
     }
