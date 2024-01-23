@@ -31,6 +31,21 @@ services:
     volumes:
       - notify_postgres_volume:/var/lib/postgresql/data
   
+  notify_redis:
+    image: 'bitnami/redis:latest'
+    volumes:
+    - notify_redis_volume:/data
+    ports:
+      - "${REDIS_PORT}:6379"
+    restart: on-failure
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+  
   pgadmin:
     container_name: pg-admin
     image: dpage/pgadmin4
@@ -46,4 +61,5 @@ services:
   
 volumes:
   notify_postgres_volume:
+  notify_redis_volume:
 

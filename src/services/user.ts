@@ -2,7 +2,7 @@ import { Repository } from "typeorm";
 import { ApiError, MainDataSource } from "../configs";
 import { UserEntity, UserSecurityKeysEntity } from "../models";
 import { userCreateSchema, userResponseSchema, userUpdateSchema, UserResponseType} from "../schemas/user";
-import { hashPassword } from "./utils";
+import { CryptoHandler } from "../helpers";
 
 export class UserService {
     private userRepository: Repository<UserEntity>;
@@ -21,7 +21,7 @@ export class UserService {
         let user = new UserEntity();
         user.name = validatedResult.data.name;
         user.email = validatedResult.data.email;
-        user.password = await hashPassword(validatedResult.data.password);
+        user.password = await CryptoHandler.hashPassword(validatedResult.data.password);
         await this.userRepository.save(user);
         return userResponseSchema.parse(user); 
     }
@@ -53,7 +53,7 @@ export class UserService {
         user.name = validatedResult.data?.name || user.name;
         user.email = validatedResult.data?.email || user.email;
         if (validatedResult.data?.password) {
-            user.password = await hashPassword(validatedResult.data.password);
+            user.password = await CryptoHandler.hashPassword(validatedResult.data.password);
         }
         await this.userRepository.save(user);
         return userResponseSchema.parse(user);
