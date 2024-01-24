@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 import { ApiError, MainDataSource } from "../configs";
 import { UserEntity, UserSecurityKeysEntity } from "../models";
-import { userCreateSchema, userResponseSchema, userUpdateSchema, UserResponseType} from "../schemas/user";
+import { userCreateSchema, userResponseSchema, userUpdateSchema, UserResponseType, UserUpdateType, UserCreateType } from "../schemas/user";
 import { CryptoHandler } from "../helpers";
 
 export default class UserService {
@@ -13,7 +13,7 @@ export default class UserService {
         this.userKeysRepository = MainDataSource.getRepository(UserSecurityKeysEntity);
     }
 
-    async create(user_data: Object): Promise<UserResponseType> {
+    async create(user_data: UserCreateType): Promise<UserResponseType> {
         const validatedResult = await userCreateSchema.safeParseAsync(user_data);
         if (!validatedResult.success) {
             throw new ApiError(400, validatedResult.error.message, validatedResult.error.format());
@@ -42,7 +42,7 @@ export default class UserService {
         return userResponseSchema.parse(user);
     }
 
-    async update(id: string, data: Object): Promise<UserResponseType>{
+    async update(id: string, data: UserUpdateType): Promise<UserResponseType>{
         const user = await this.userRepository.findOneBy({ id });
         if (!user) throw new ApiError(404, 'User not found');
 

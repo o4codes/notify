@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "build": "tsoa spec-and-routes && tsc",
-    "start": "node build/src/server.js"
+    "start": "node dist/app.js"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -21,6 +21,7 @@
     "morgan": "^1.10.0",
     "morgan-json": "^1.1.0",
     "pg": "^8.11.3",
+    "reflect-metadata": "^0.2.1",
     "swagger-ui-express": "^5.0.0",
     "tsoa": "5.1.1",
     "typeorm": "^0.3.19",

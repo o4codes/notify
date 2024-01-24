@@ -1,4 +1,5 @@
-import { RegisterRoutes } from "../build/routes";
+import 'reflect-metadata';
+import { RegisterRoutes } from "./routes";
 import express, { json, urlencoded, Response as ExResponse, Request as ExRequest } from "express";
 import swaggerUi from "swagger-ui-express";
 import { logger, httpLogger } from "./configs";
@@ -18,7 +19,7 @@ app.use(json());
 app.use("/api/docs", swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
     logger.info("Serving Swagger UI");
     return res.send(
-        swaggerUi.generateHTML(await import("../build/swagger.json"))
+        swaggerUi.generateHTML(await import("../dist/swagger.json"))
     );
 });
 
@@ -26,3 +27,10 @@ RegisterRoutes(app);
 
 app.use(notFoundHandler)
 app.use(errorHandler)
+
+
+const port = process.env.API_PORT || 4555;
+
+app.listen(port, () => {
+    console.log(`Notifiy Service is listening at port ${port}`) 
+});

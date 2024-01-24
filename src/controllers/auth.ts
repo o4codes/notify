@@ -1,9 +1,10 @@
-import { Body, Controller, Post, Route, Response } from "tsoa";
+import { Body, Controller, Post, Route, Response, Tags } from "tsoa";
 import { ApiResponse, ResponseStatus, AuthLoginRequestType, AuthLoginResponseType, UserCreateType, UserResponseType } from "../schemas";
 import { AuthService, UserService } from "../services";
 
 
 @Route("auth")
+@Tags("Auth")
 export class AuthController extends Controller {
 
     @Post("/login")

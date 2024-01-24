@@ -1,0 +1,475 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"ResponseStatus": {
+				"enum": [
+					"success",
+					"failure"
+				],
+				"type": "string"
+			},
+			"ReturnType_typeofauthLoginResponseSchema.parse_": {
+				"properties": {
+					"user": {
+						"properties": {
+							"updatedDateTime": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"createdDateTime": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"isVerified": {
+								"type": "boolean"
+							},
+							"email": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"token": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"AuthLoginResponseType": {
+				"$ref": "#/components/schemas/ReturnType_typeofauthLoginResponseSchema.parse_"
+			},
+			"ApiResponse_AuthLoginResponseType_": {
+				"properties": {
+					"status": {
+						"$ref": "#/components/schemas/ResponseStatus"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/AuthLoginResponseType"
+					}
+				},
+				"required": [
+					"status",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReturnType_typeofauthLoginRequestSchema.parse_": {
+				"properties": {
+					"password": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"AuthLoginRequestType": {
+				"$ref": "#/components/schemas/ReturnType_typeofauthLoginRequestSchema.parse_"
+			},
+			"ReturnType_typeofuserResponseSchema.parse_": {
+				"properties": {
+					"updatedDateTime": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdDateTime": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isVerified": {
+						"type": "boolean"
+					},
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"UserResponseType": {
+				"$ref": "#/components/schemas/ReturnType_typeofuserResponseSchema.parse_"
+			},
+			"ApiResponse_UserResponseType_": {
+				"properties": {
+					"status": {
+						"$ref": "#/components/schemas/ResponseStatus"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/UserResponseType"
+					}
+				},
+				"required": [
+					"status",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse": {
+				"properties": {
+					"status": {
+						"$ref": "#/components/schemas/ResponseStatus"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					}
+				},
+				"required": [
+					"status",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReturnType_typeofuserCreateSchema.parse_": {
+				"properties": {
+					"password": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"UserCreateType": {
+				"$ref": "#/components/schemas/ReturnType_typeofuserCreateSchema.parse_"
+			},
+			"ApiPaginatedResponse_Array_UserResponseType__": {
+				"properties": {
+					"status": {
+						"$ref": "#/components/schemas/ResponseStatus"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/UserResponseType"
+						},
+						"type": "array"
+					},
+					"size": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"status",
+					"message",
+					"size",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PaginatedUserResponseType": {
+				"$ref": "#/components/schemas/ApiPaginatedResponse_Array_UserResponseType__"
+			},
+			"ReturnType_typeofuserUpdateSchema.parse_": {
+				"properties": {
+					"password": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"UserUpdateType": {
+				"$ref": "#/components/schemas/ReturnType_typeofuserUpdateSchema.parse_"
+			}
+		},
+		"securitySchemes": {
+			"basic": {
+				"type": "apiKey",
+				"name": "authorization",
+				"in": "header"
+			},
+			"bearer": {
+				"type": "apiKey",
+				"name": "authorization",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "notify",
+		"version": "1.0.0",
+		"license": {
+			"name": "MIT"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/auth/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_AuthLoginResponseType_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AuthLoginRequestType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/signup": {
+			"post": {
+				"operationId": "CreateUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_UserResponseType_"
+								}
+							}
+						}
+					},
+					"default": {
+						"description": "Error Occured",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserCreateType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users": {
+			"get": {
+				"operationId": "GetUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PaginatedUserResponseType"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 20,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "offset",
+						"required": false,
+						"schema": {
+							"default": 0,
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/users/{userId}": {
+			"get": {
+				"operationId": "GetUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_UserResponseType_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_UserResponseType_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserUpdateType"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
