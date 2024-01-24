@@ -4,7 +4,7 @@ import { UserEntity, UserSecurityKeysEntity } from "../models";
 import { userCreateSchema, userResponseSchema, userUpdateSchema, UserResponseType} from "../schemas/user";
 import { CryptoHandler } from "../helpers";
 
-export class UserService {
+export default class UserService {
     private userRepository: Repository<UserEntity>;
     private userKeysRepository: Repository<UserSecurityKeysEntity>;
 

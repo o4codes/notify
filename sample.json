@@ -1,82 +1,67 @@
 {
-    "date": "Mon Jan 22 2024 12:48:11 GMT+0100 (West Africa Standard Time)",
-    "error": {
-        "code": "MODULE_NOT_FOUND",
-        "requireStack": [
-            "/home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js",
-            "/home/adam/Documents/Projects/work/mine/notify/build/src/app.js",
-            "/home/adam/Documents/Projects/work/mine/notify/build/src/server.js"
-        ]
-    },
+    "date": "Tue Jan 23 2024 23:39:39 GMT+0000 (Coordinated Universal Time)",
+    "error": {},
     "exception": true,
     "level": "error",
-    "message": "uncaughtException: Cannot find module 'src/configs'\nRequire stack:\n- /home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/app.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/server.js\nError: Cannot find module 'src/configs'\nRequire stack:\n- /home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/app.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/server.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:939:15)\n    at Module._load (node:internal/modules/cjs/loader:780:27)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)\n    at require (node:internal/modules/cjs/helpers:102:18)\n    at Object.<anonymous> (/home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js:4:19)\n    at Module._compile (node:internal/modules/cjs/loader:1105:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)\n    at Module.load (node:internal/modules/cjs/loader:981:32)\n    at Module._load (node:internal/modules/cjs/loader:827:12)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)",
+    "message": "uncaughtException: (no error message)\nTypeError\n    at Reflect.getMetadata (/app/node_modules/reflect-metadata/Reflect.js:354:23)\n    at fetchMiddlewares (/app/node_modules/@tsoa/runtime/src/decorators/middlewares.ts:53:18)\n    at RegisterRoutes (/app/build/routes.js:90:121)\n    at Object.<anonymous> (/app/src/app.ts:25:15)\n    at Module._compile (node:internal/modules/cjs/loader:1376:14)\n    at Module.m._compile (/app/node_modules/ts-node/src/index.ts:1618:23)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)\n    at Object.require.extensions.<computed> [as .ts] (/app/node_modules/ts-node/src/index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1207:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:1023:12)",
     "os": {
         "loadavg": [
-            5.9,
-            5.13,
-            4.77
+            5.16,
+            4.97,
+            5.4
         ],
-        "uptime": 14390.67
+        "uptime": 50764.31
     },
     "process": {
         "argv": [
-            "/home/adam/.nvm/versions/node/v18.1.0/bin/node",
-            "/home/adam/Documents/Projects/work/mine/notify/build/src/server.js"
+            "/app/node_modules/.bin/ts-node",
+            "/app/src/server.ts"
         ],
-        "cwd": "/home/adam/Documents/Projects/work/mine/notify",
-        "execPath": "/home/adam/.nvm/versions/node/v18.1.0/bin/node",
-        "gid": 1000,
+        "cwd": "/app",
+        "execPath": "/usr/local/bin/node",
+        "gid": 0,
         "memoryUsage": {
-            "arrayBuffers": 209175,
-            "external": 810593,
-            "heapTotal": 93958144,
-            "heapUsed": 64161368,
-            "rss": 151781376
+            "arrayBuffers": 1283309,
+            "external": 4245640,
+            "heapTotal": 270589952,
+            "heapUsed": 248869352,
+            "rss": 373694464
         },
-        "pid": 805776,
-        "uid": 1000,
-        "version": "v18.1.0"
+        "pid": 66,
+        "uid": 0,
+        "version": "v20.11.0"
     },
-    "stack": "Error: Cannot find module 'src/configs'\nRequire stack:\n- /home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/app.js\n- /home/adam/Documents/Projects/work/mine/notify/build/src/server.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:939:15)\n    at Module._load (node:internal/modules/cjs/loader:780:27)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)\n    at require (node:internal/modules/cjs/helpers:102:18)\n    at Object.<anonymous> (/home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js:4:19)\n    at Module._compile (node:internal/modules/cjs/loader:1105:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)\n    at Module.load (node:internal/modules/cjs/loader:981:32)\n    at Module._load (node:internal/modules/cjs/loader:827:12)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)",
+    "stack": "TypeError\n    at Reflect.getMetadata (/app/node_modules/reflect-metadata/Reflect.js:354:23)\n    at fetchMiddlewares (/app/node_modules/@tsoa/runtime/src/decorators/middlewares.ts:53:18)\n    at RegisterRoutes (/app/build/routes.js:90:121)\n    at Object.<anonymous> (/app/src/app.ts:25:15)\n    at Module._compile (node:internal/modules/cjs/loader:1376:14)\n    at Module.m._compile (/app/node_modules/ts-node/src/index.ts:1618:23)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)\n    at Object.require.extensions.<computed> [as .ts] (/app/node_modules/ts-node/src/index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1207:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:1023:12)",
     "trace": [
         {
-            "column": 15,
-            "file": "node:internal/modules/cjs/loader",
-            "function": "Module._resolveFilename",
-            "line": 939,
-            "method": "_resolveFilename",
-            "native": false
-        },
-        {
-            "column": 27,
-            "file": "node:internal/modules/cjs/loader",
-            "function": "Module._load",
-            "line": 780,
-            "method": "_load",
-            "native": false
-        },
-        {
-            "column": 19,
-            "file": "node:internal/modules/cjs/loader",
-            "function": "Module.require",
-            "line": 1005,
-            "method": "require",
+            "column": 23,
+            "file": "/app/node_modules/reflect-metadata/Reflect.js",
+            "function": "Reflect.getMetadata",
+            "line": 354,
+            "method": "getMetadata",
             "native": false
         },
         {
             "column": 18,
-            "file": "node:internal/modules/cjs/helpers",
-            "function": "require",
-            "line": 102,
+            "file": "/app/node_modules/@tsoa/runtime/src/decorators/middlewares.ts",
+            "function": "fetchMiddlewares",
+            "line": 53,
             "method": null,
             "native": false
         },
         {
-            "column": 19,
-            "file": "/home/adam/Documents/Projects/work/mine/notify/build/src/middlewares/errorHandler.js",
+            "column": 121,
+            "file": "/app/build/routes.js",
+            "function": "RegisterRoutes",
+            "line": 90,
+            "method": null,
+            "native": false
+        },
+        {
+            "column": 15,
+            "file": "/app/src/app.ts",
             "function": null,
-            "line": 4,
+            "line": 25,
             "method": null,
             "native": false
         },
@@ -84,7 +69,15 @@
             "column": 14,
             "file": "node:internal/modules/cjs/loader",
             "function": "Module._compile",
-            "line": 1105,
+            "line": 1376,
+            "method": "_compile",
+            "native": false
+        },
+        {
+            "column": 23,
+            "file": "/app/node_modules/ts-node/src/index.ts",
+            "function": "Module.m._compile",
+            "line": 1618,
             "method": "_compile",
             "native": false
         },
@@ -92,15 +85,23 @@
             "column": 10,
             "file": "node:internal/modules/cjs/loader",
             "function": "Module._extensions..js",
-            "line": 1159,
+            "line": 1435,
             "method": ".js",
+            "native": false
+        },
+        {
+            "column": 12,
+            "file": "/app/node_modules/ts-node/src/index.ts",
+            "function": "Object.require.extensions.<computed> [as .ts]",
+            "line": 1621,
+            "method": "ts]",
             "native": false
         },
         {
             "column": 32,
             "file": "node:internal/modules/cjs/loader",
             "function": "Module.load",
-            "line": 981,
+            "line": 1207,
             "method": "load",
             "native": false
         },
@@ -108,16 +109,8 @@
             "column": 12,
             "file": "node:internal/modules/cjs/loader",
             "function": "Module._load",
-            "line": 827,
+            "line": 1023,
             "method": "_load",
-            "native": false
-        },
-        {
-            "column": 19,
-            "file": "node:internal/modules/cjs/loader",
-            "function": "Module.require",
-            "line": 1005,
-            "method": "require",
             "native": false
         }
     ]
