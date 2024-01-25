@@ -2,7 +2,8 @@ import { Repository } from "typeorm";
 import { ApiError, MainDataSource } from "../configs";
 import { UserEntity } from "../models";
 import { userResponseSchema, AuthLoginResponseType, authLoginRequestSchema, UserCreateType, userCreateSchema } from "../schemas";
-import { CryptoHandler, JWTHandler, cache } from "../helpers";
+import { MailRecipients, MailBody } from "../helpers/emailSender";
+import { CryptoHandler, JWTHandler, cache, EmailSender } from "../helpers";
 import UserService from "./user";
 
 
@@ -35,7 +36,20 @@ export default class AuthService {
         const userValidatedData = validatedResult.data;
         const otpCode: string = await this._generateOTPCode();
         await cache.save(otpCode, JSON.stringify(userValidatedData));
+        await this._sendVerifyEmail(userValidatedData.email, otpCode);
         return
+    }
+
+    private async _sendVerifyEmail(recipientEmail: string, otpCode: string) {
+        const receipients: MailRecipients = {
+            to: [recipientEmail,]
+        }
+        const messageBody: MailBody = {
+            text: `Your OTP code is ${otpCode}`
+        }
+        const subject = "Verify Email Address"
+        
+        await new EmailSender(receipients, subject, messageBody).send();
     }
 
     async verifyUserAccount(email: string, otpCode: string) {

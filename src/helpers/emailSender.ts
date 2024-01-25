@@ -1,15 +1,15 @@
 import { SES, AWSError } from "aws-sdk";
 import { SendRawEmailRequest, SendRawEmailResponse } from 'aws-sdk/clients/ses';
 import MailComposer from "nodemailer/lib/mail-composer";
-import { logger } from "../configs";
+import { Settings, logger } from "../configs";
 
 const awsConfig = {
-    region: process.env.AWS_REGION || 'us-east-1',
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    region: Settings.awsRegion,
+    accessKeyId: Settings.awsAccessKeyId,
+    secretAccessKey: Settings.awsSecretAccessKey
 }
 
-export interface Recipients {
+export interface MailRecipients {
     to: string[],
     cc?: string[],
     bcc?: string[]
@@ -28,12 +28,12 @@ export interface MailAttachment {
 
 export class EmailSender {
     private _ses: SES;
-    private _recipients: Recipients;
+    private _recipients: MailRecipients;
     private _subject: string;
     private _body: MailBody;
     private _attachments?: MailAttachment[]
 
-    constructor(recipients: Recipients, subject: string, body: MailBody, attachments?: MailAttachment[]) {
+    constructor(recipients: MailRecipients, subject: string, body: MailBody, attachments?: MailAttachment[]) {
         this._ses = new SES(awsConfig); 
         this._recipients = recipients;
         this._subject = subject;
@@ -41,7 +41,7 @@ export class EmailSender {
         this._attachments = attachments;
     }
 
-    public async send(sourceEmail: string) {
+    public async send(sourceEmail: string = Settings.sourceEmail) {
         this._validate()
 
         const rawMessage = await this._constructMessage(sourceEmail)
