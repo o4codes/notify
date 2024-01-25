@@ -28,13 +28,6 @@ export class UserEntity extends BaseEntity {
     @IsString()
     password: string;
 
-    @Column({
-        type: "boolean",
-        default: false
-    })
-    @IsBoolean()
-    isVerified: boolean;
-
     @OneToOne(() => UserSecurityKeysEntity, (security_keys) => security_keys.user)
     security_keys: UserSecurityKeysEntity;
 }

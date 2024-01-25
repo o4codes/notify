@@ -1,6 +1,6 @@
 import { Redis } from "ioredis";
 
-export default class CacheHandler {
+class CacheHandler {
     private _cache: Redis;
     private _cache_ttl: number = 60 * 60;
 
@@ -30,3 +30,6 @@ export default class CacheHandler {
         this._cache.flushall();
     }
 }
+
+const cache = new CacheHandler();
+export default cache;

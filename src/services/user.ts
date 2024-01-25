@@ -13,10 +13,10 @@ export default class UserService {
         this.userKeysRepository = MainDataSource.getRepository(UserSecurityKeysEntity);
     }
 
-    async create(user_data: UserCreateType): Promise<UserResponseType> {
-        const validatedResult = await userCreateSchema.safeParseAsync(user_data);
+    async create(userData: UserCreateType): Promise<UserResponseType> {
+        const validatedResult = await userCreateSchema.safeParseAsync(userData);
         if (!validatedResult.success) {
-            throw new ApiError(400, validatedResult.error.message, validatedResult.error.format());
+            throw new ApiError(400, "Invalid user data", validatedResult.error.format());
         }
         let user = new UserEntity();
         user.name = validatedResult.data.name;
