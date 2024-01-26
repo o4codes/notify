@@ -59,7 +59,18 @@ export default class AuthService {
         if (userData.email !== email) throw new ApiError(400, 'Invalid OTP code');
 
         const user = await new UserService().create(userData);
+        await cache.delete(otpCode);
+        await this._sendVerifySuccessEmail(email);
         return user
+    }
+
+    private async _sendVerifySuccessEmail(recipientEmail: string) {
+        const recipients: MailRecipients = {
+            to: [recipientEmail]
+        }
+        const messageBody: MailBody = {
+            text: "Your account has been verified successfully"
+        }
     }
 
     private async _generateOTPCode(length: number = 4){
