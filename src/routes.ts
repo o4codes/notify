@@ -18,7 +18,7 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ReturnType_typeofauthLoginResponseSchema.parse_": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"user":{"dataType":"nestedObjectLiteral","nestedProperties":{"updatedDateTime":{"dataType":"datetime"},"createdDateTime":{"dataType":"datetime"},"isVerified":{"dataType":"boolean"},"email":{"dataType":"string"},"name":{"dataType":"string"},"id":{"dataType":"string"}}},"token":{"dataType":"string"}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"user":{"dataType":"nestedObjectLiteral","nestedProperties":{"updatedDateTime":{"dataType":"datetime"},"createdDateTime":{"dataType":"datetime"},"email":{"dataType":"string"},"name":{"dataType":"string"},"id":{"dataType":"string"}}},"token":{"dataType":"string"}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "AuthLoginResponseType": {
@@ -46,26 +46,6 @@ const models: TsoaRoute.Models = {
         "type": {"ref":"ReturnType_typeofauthLoginRequestSchema.parse_","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ReturnType_typeofuserResponseSchema.parse_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"updatedDateTime":{"dataType":"datetime"},"createdDateTime":{"dataType":"datetime"},"isVerified":{"dataType":"boolean"},"email":{"dataType":"string"},"name":{"dataType":"string"},"id":{"dataType":"string"}},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "UserResponseType": {
-        "dataType": "refAlias",
-        "type": {"ref":"ReturnType_typeofuserResponseSchema.parse_","validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ApiResponse_UserResponseType_": {
-        "dataType": "refObject",
-        "properties": {
-            "status": {"ref":"ResponseStatus","required":true},
-            "message": {"dataType":"string","required":true},
-            "data": {"ref":"UserResponseType"},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ApiResponse": {
         "dataType": "refObject",
         "properties": {
@@ -84,6 +64,36 @@ const models: TsoaRoute.Models = {
     "UserCreateType": {
         "dataType": "refAlias",
         "type": {"ref":"ReturnType_typeofuserCreateSchema.parse_","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ReturnType_typeofuserResponseSchema.parse_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"updatedDateTime":{"dataType":"datetime"},"createdDateTime":{"dataType":"datetime"},"email":{"dataType":"string"},"name":{"dataType":"string"},"id":{"dataType":"string"}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "UserResponseType": {
+        "dataType": "refAlias",
+        "type": {"ref":"ReturnType_typeofuserResponseSchema.parse_","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ApiResponse_UserResponseType_": {
+        "dataType": "refObject",
+        "properties": {
+            "status": {"ref":"ResponseStatus","required":true},
+            "message": {"dataType":"string","required":true},
+            "data": {"ref":"UserResponseType"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ReturnType_typeofauthVerifySchema.parse_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"otpCode":{"dataType":"string"},"email":{"dataType":"string"}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "AuthVerifyType": {
+        "dataType": "refAlias",
+        "type": {"ref":"ReturnType_typeofauthVerifySchema.parse_","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ApiPaginatedResponse_Array_UserResponseType__": {
@@ -167,6 +177,31 @@ export function RegisterRoutes(app: Router) {
 
 
               const promise = controller.createUser.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/auth/verify',
+            ...(fetchMiddlewares<RequestHandler>(AuthController)),
+            ...(fetchMiddlewares<RequestHandler>(AuthController.prototype.resendVerification)),
+
+            function AuthController_resendVerification(request: any, response: any, next: any) {
+            const args = {
+                    body: {"in":"body","name":"body","required":true,"ref":"AuthVerifyType"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new AuthController();
+
+
+              const promise = controller.resendVerification.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);

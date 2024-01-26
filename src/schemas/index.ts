@@ -1,5 +1,5 @@
 import { ApiPaginatedResponse, ApiResponse, ResponseStatus } from "./commons";
-import { AuthLoginRequestType, AuthLoginResponseType, authLoginRequestSchema, authLoginResponseSchema } from "./auth";
+import { AuthLoginRequestType, AuthLoginResponseType, authLoginRequestSchema, authLoginResponseSchema, authVerifySchema, AuthVerifyType } from "./auth";
 import { PaginatedUserResponseType, UserCreateType, UserResponseType, userCreateSchema, userResponseSchema, UserUpdateType,  } from "./user";
 
 export {
@@ -15,5 +15,7 @@ export {
     UserResponseType,
     userCreateSchema,
     userResponseSchema,
-    UserUpdateType
+    UserUpdateType,
+    authVerifySchema,
+    AuthVerifyType
 }

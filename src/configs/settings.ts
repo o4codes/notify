@@ -13,7 +13,10 @@ const Settings = {
     sourceEmail: process.env.SES_SOURCE_EMAIL || '',
     awsRegion: process.env.AWS_REGION || 'us-east-1',
     awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
-    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || ''
+    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || '',
+    redisHost: process.env.REDIS_HOST || 'localhost',
+    redisPort: parseInt(process.env.REDIS_PORT || '0', 10),
+    redisPassword: process.env.REDIS_PASSWORD || '',
 }
 
 export default Settings;

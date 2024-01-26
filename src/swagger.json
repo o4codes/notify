@@ -25,9 +25,6 @@
 								"type": "string",
 								"format": "date-time"
 							},
-							"isVerified": {
-								"type": "boolean"
-							},
 							"email": {
 								"type": "string"
 							},
@@ -84,54 +81,6 @@
 			"AuthLoginRequestType": {
 				"$ref": "#/components/schemas/ReturnType_typeofauthLoginRequestSchema.parse_"
 			},
-			"ReturnType_typeofuserResponseSchema.parse_": {
-				"properties": {
-					"updatedDateTime": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"createdDateTime": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"isVerified": {
-						"type": "boolean"
-					},
-					"email": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"id": {
-						"type": "string"
-					}
-				},
-				"type": "object",
-				"description": "Obtain the return type of a function type"
-			},
-			"UserResponseType": {
-				"$ref": "#/components/schemas/ReturnType_typeofuserResponseSchema.parse_"
-			},
-			"ApiResponse_UserResponseType_": {
-				"properties": {
-					"status": {
-						"$ref": "#/components/schemas/ResponseStatus"
-					},
-					"message": {
-						"type": "string"
-					},
-					"data": {
-						"$ref": "#/components/schemas/UserResponseType"
-					}
-				},
-				"required": [
-					"status",
-					"message"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
 			"ApiResponse": {
 				"properties": {
 					"status": {
@@ -172,6 +121,66 @@
 			},
 			"UserCreateType": {
 				"$ref": "#/components/schemas/ReturnType_typeofuserCreateSchema.parse_"
+			},
+			"ReturnType_typeofuserResponseSchema.parse_": {
+				"properties": {
+					"updatedDateTime": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdDateTime": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"UserResponseType": {
+				"$ref": "#/components/schemas/ReturnType_typeofuserResponseSchema.parse_"
+			},
+			"ApiResponse_UserResponseType_": {
+				"properties": {
+					"status": {
+						"$ref": "#/components/schemas/ResponseStatus"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/UserResponseType"
+					}
+				},
+				"required": [
+					"status",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReturnType_typeofauthVerifySchema.parse_": {
+				"properties": {
+					"otpCode": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"AuthVerifyType": {
+				"$ref": "#/components/schemas/ReturnType_typeofauthVerifySchema.parse_"
 			},
 			"ApiPaginatedResponse_Array_UserResponseType__": {
 				"properties": {
@@ -291,7 +300,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/ApiResponse_UserResponseType_"
+									"$ref": "#/components/schemas/ApiResponse"
 								}
 							}
 						}
@@ -318,6 +327,48 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/UserCreateType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/verify": {
+			"post": {
+				"operationId": "ResendVerification",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_UserResponseType_"
+								}
+							}
+						}
+					},
+					"201": {
+						"description": "User created successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_UserResponseType_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AuthVerifyType"
 							}
 						}
 					}

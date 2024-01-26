@@ -1,4 +1,5 @@
 import { Redis } from "ioredis";
+import { Settings } from "../configs";
 
 class CacheHandler {
     private _cache: Redis;
@@ -6,9 +7,9 @@ class CacheHandler {
 
     constructor(){
         this._cache = new Redis({
-            host: process.env.REDIS_HOST || 'localhost',
-            port: Number(process.env.REDIS_PORT) || 6379,
-            password: process.env.REDIS_PASSWORD 
+            host: Settings.redisHost,
+            port: Settings.redisPort,
+            password: Settings.redisPassword 
         })
     }
 

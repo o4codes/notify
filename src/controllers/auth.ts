@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Route, Response, Tags } from "tsoa";
-import { ApiResponse, ResponseStatus, AuthLoginRequestType, AuthLoginResponseType, UserCreateType, UserResponseType } from "../schemas";
-import { AuthService, UserService } from "../services";
+import { ApiResponse, ResponseStatus, AuthLoginRequestType, AuthLoginResponseType, UserCreateType, UserResponseType, AuthVerifyType } from "../schemas";
+import { AuthService } from "../services";
 
 
 @Route("auth")
@@ -24,14 +24,28 @@ export class AuthController extends Controller {
     @Post("/signup")
     public async createUser(
         @Body() body: UserCreateType
-    ): Promise<ApiResponse<UserResponseType>> {
-        const userCreated =  await new UserService().create(body);
+    ): Promise<ApiResponse> {
+        const userCreated =  await new AuthService().signUp(body);
         const response = {
             status: ResponseStatus.SUCCESS,
-            message: "User created successfully",
-            data: userCreated
+            message: "Email Verification sent successfully",
+            data: null
         }
         return response
     }
 
+    @Response<ApiResponse>('default', "Error Occured")
+    @Response<ApiResponse<UserResponseType>>(201, "User created successfully")
+    @Post("/verify")
+    public async resendVerification(
+        @Body() body: AuthVerifyType
+    ): Promise<ApiResponse<UserResponseType>> {
+        const userCreated =  await new AuthService().verifyUserAccount(body.email, body.otpCode)
+        const response = {
+            status: ResponseStatus.SUCCESS,
+            message: "Account verified successfully",
+            data: userCreated
+        }
+        return response
+    }
 }
