@@ -25,7 +25,7 @@ export class AuthController extends Controller {
     public async createUser(
         @Body() body: UserCreateType
     ): Promise<ApiResponse> {
-        const userCreated =  await new AuthService().signUp(body);
+        await new AuthService().signUp(body);
         const response = {
             status: ResponseStatus.SUCCESS,
             message: "Email Verification sent successfully",
