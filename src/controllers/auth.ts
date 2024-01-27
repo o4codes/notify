@@ -1,6 +1,7 @@
 import { Body, Controller, Post, Route, Response, Tags } from "tsoa";
-import { ApiResponse, ResponseStatus, AuthLoginRequestType, AuthLoginResponseType, UserCreateType, UserResponseType, AuthVerifyType } from "../schemas";
+import { ApiResponse, ResponseStatus } from "../schemas";
 import { AuthService } from "../services";
+import { AuthLoginRequestType, AuthLoginResponseType, AuthVerifyType, UserCreateType, UserResponseType } from "../types";
 
 
 @Route("auth")
@@ -48,4 +49,5 @@ export class AuthController extends Controller {
         }
         return response
     }
+
 }

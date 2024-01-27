@@ -1,6 +1,7 @@
 import { Controller, Get, Patch, Delete, Body, Route, Query, Path, Tags } from "tsoa";
 import { UserService } from "../services";
-import { ApiResponse, PaginatedUserResponseType, ResponseStatus, UserResponseType, UserUpdateType } from "../schemas";
+import { ApiResponse, ResponseStatus } from "../schemas";
+import { PaginatedUserResponseType, UserResponseType, UserUpdateType } from "../types";
 
 
 @Route("users")

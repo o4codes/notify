@@ -20,8 +20,3 @@ export const authVerifySchema = z.object({
     email: z.string().email({ message: "Invalid email address" }),
     otpCode: z.string()
 });
-
-
-export type AuthLoginRequestType = ReturnType<typeof authLoginRequestSchema.parse>;
-export type AuthLoginResponseType = ReturnType<typeof authLoginResponseSchema.parse>;
-export type AuthVerifyType = ReturnType<typeof authVerifySchema.parse>;

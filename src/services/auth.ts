@@ -1,9 +1,10 @@
 import { Repository } from "typeorm";
 import { ApiError, MainDataSource } from "../configs";
 import { UserEntity } from "../models";
-import { userResponseSchema, AuthLoginResponseType, authLoginRequestSchema, UserCreateType, userCreateSchema } from "../schemas";
+import { userResponseSchema, authLoginRequestSchema, userCreateSchema } from "../schemas";
 import { MailRecipients, MailBody } from "../helpers/emailSender";
 import { CryptoHandler, JWTHandler, cache, EmailSender } from "../helpers";
+import { AuthLoginResponseType, UserCreateType } from "../types";
 import UserService from "./user";
 
 
@@ -71,6 +72,8 @@ export default class AuthService {
         const messageBody: MailBody = {
             text: "Your account has been verified successfully"
         }
+        const subject = "Email Verification Success"
+        await new EmailSender(recipients, subject, messageBody).send();
     }
 
     private async _generateOTPCode(length: number = 4){

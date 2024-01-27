@@ -1,8 +1,9 @@
 import { Repository } from "typeorm";
 import { ApiError, MainDataSource } from "../configs";
 import { UserEntity, UserSecurityKeysEntity } from "../models";
-import { userCreateSchema, userResponseSchema, userUpdateSchema, UserResponseType, UserUpdateType, UserCreateType } from "../schemas/user";
+import { userCreateSchema, userResponseSchema, userUpdateSchema } from "../schemas/user";
 import { CryptoHandler } from "../helpers";
+import { UserCreateType, UserResponseType, UserUpdateType } from "../types";
 
 export default class UserService {
     private userRepository: Repository<UserEntity>;

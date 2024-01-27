@@ -1,6 +1,4 @@
 import { z } from "zod"
-import { ApiPaginatedResponse } from "./commons";
-
 
 
 export const userSchema = z.object({
@@ -19,8 +17,3 @@ export const userSchema = z.object({
 export const userCreateSchema = userSchema.omit({ id: true, createdDateTime: true, updatedDateTime: true });
 export const userUpdateSchema = userCreateSchema.optional();
 export const userResponseSchema = userSchema.omit({ password: true });
-
-export type UserCreateType = ReturnType<typeof userCreateSchema.parse>;
-export type UserUpdateType = ReturnType<typeof userUpdateSchema.parse>;
-export type UserResponseType = ReturnType<typeof userResponseSchema.parse>;
-export type PaginatedUserResponseType = ApiPaginatedResponse<Array<UserResponseType>>;
