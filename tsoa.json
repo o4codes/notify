@@ -6,12 +6,12 @@
     ],
     "spec": {
         "securityDefinitions": {
-            "basic": {
+            "api_key": {
                 "type": "apiKey",
                 "name": "authorization",
                 "in": "header"
             },
-            "bearer": {
+            "jwt": {
                 "type": "apiKey",
                 "name": "authorization",
                 "in": "header"
@@ -22,6 +22,7 @@
     },
     "routes": {
         "entryFile": "./src/app.ts",
-        "routesDir": "./src"
+        "routesDir": "./src",
+        "authenticationModule": "./src/middlewares/authHandler"
     }
 }

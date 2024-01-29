@@ -1,7 +1,8 @@
-import { Controller, Get, Patch, Delete, Body, Route, Query, Path, Tags } from "tsoa";
+import { Controller, Get, Patch, Delete, Body, Route, Query, Path, Tags, Security, Request } from "tsoa";
 import { UserService } from "../services";
 import { ApiResponse, ResponseStatus } from "../schemas";
 import { PaginatedUserResponseType, UserResponseType, UserUpdateType } from "../types";
+import { ApiError } from "../configs";
 
 
 @Route("users")
@@ -23,10 +24,13 @@ export class UserController extends Controller {
         }
     }
 
+    @Security("jwt")
     @Get("/{userId}")
     public async getUser(
-        @Path() userId: string
+        @Path() userId: string,
+        @Request() request: any
     ): Promise<ApiResponse<UserResponseType>> {
+        if (request.user.id != userId) throw new ApiError(401, 'Inadequate permission to access this resource');
         const user = await new UserService().get(userId);
         return {
             status: ResponseStatus.SUCCESS,
@@ -35,11 +39,14 @@ export class UserController extends Controller {
         }
     }
 
+    @Security("jwt")
     @Patch("/{userId}")
     public async updateUser(
         @Path() userId: string,
-        @Body() body: UserUpdateType
+        @Body() body: UserUpdateType,
+        @Request() request: any
     ): Promise<ApiResponse<UserResponseType>> {
+        if (request.user.id != userId) throw new ApiError(401, 'Inadequate permission to update this resource');
         const user = await new UserService().update(userId, body);
         return {
             status: ResponseStatus.SUCCESS,
@@ -48,10 +55,13 @@ export class UserController extends Controller {
         }
     }
 
+    @Security("jwt")
     @Delete("/{userId}")
     public async deleteUser(
-        @Path() userId: string
+        @Path() userId: string,
+        @Request() request: any
     ): Promise<ApiResponse> {
+        if (request.user.id != userId) throw new ApiError(401, 'Inadequate permission to delete this resource');
         await new UserService().delete(userId);
         return {
             status: ResponseStatus.SUCCESS,

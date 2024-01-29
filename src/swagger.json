@@ -187,12 +187,12 @@
 			}
 		},
 		"securitySchemes": {
-			"basic": {
+			"api_key": {
 				"type": "apiKey",
 				"name": "authorization",
 				"in": "header"
 			},
-			"bearer": {
+			"jwt": {
 				"type": "apiKey",
 				"name": "authorization",
 				"in": "header"
@@ -456,7 +456,11 @@
 				"tags": [
 					"User"
 				],
-				"security": [],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
 				"parameters": [
 					{
 						"in": "path",
@@ -485,7 +489,11 @@
 				"tags": [
 					"User"
 				],
-				"security": [],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
 				"parameters": [
 					{
 						"in": "path",
@@ -524,7 +532,11 @@
 				"tags": [
 					"User"
 				],
-				"security": [],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
 				"parameters": [
 					{
 						"in": "path",

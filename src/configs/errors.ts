@@ -15,4 +15,12 @@ export default class ApiError extends Error {
     public get data(): object | undefined {
         return this._data;
     }
+
+    public set data(data: object | undefined) {
+        this._data = data;
+    }
+
+    public set status(status: number) {
+        this._status = status;
+    }
 }
