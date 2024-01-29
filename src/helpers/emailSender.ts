@@ -79,7 +79,7 @@ export class EmailSender {
         const rawMessageData = await new MailComposer(message).compile().build()
         const rawMessage: SendRawEmailRequest = {
             Source: sourceEmail,
-            Destinations: [...this._recipients.to, ...this._recipients.cc || [], ...this._recipients.bcc || []],
+            Destinations: [...this._recipients.to, ...(this._recipients.cc || []), ...(this._recipients.bcc || [])],
             RawMessage: {
                 Data: rawMessageData
             }

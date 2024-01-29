@@ -1,5 +1,5 @@
 import { UserCreateType, UserUpdateType, UserResponseType, PaginatedUserResponseType } from "./user";
-import { AuthLoginRequestType, AuthLoginResponseType, AuthVerifyType } from "./auth";
+import { AuthLoginRequestType, AuthLoginResponseType, AuthVerifyType, AuthResetPasswordType } from "./auth";
 
 export {
     UserCreateType,
@@ -8,5 +8,6 @@ export {
     PaginatedUserResponseType,
     AuthLoginRequestType,
     AuthLoginResponseType,
-    AuthVerifyType
+    AuthVerifyType,
+    AuthResetPasswordType
 }

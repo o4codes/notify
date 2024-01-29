@@ -13,74 +13,6 @@
 				],
 				"type": "string"
 			},
-			"ReturnType_typeofauthLoginResponseSchema.parse_": {
-				"properties": {
-					"user": {
-						"properties": {
-							"updatedDateTime": {
-								"type": "string",
-								"format": "date-time"
-							},
-							"createdDateTime": {
-								"type": "string",
-								"format": "date-time"
-							},
-							"email": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							},
-							"id": {
-								"type": "string"
-							}
-						},
-						"type": "object"
-					},
-					"token": {
-						"type": "string"
-					}
-				},
-				"type": "object",
-				"description": "Obtain the return type of a function type"
-			},
-			"AuthLoginResponseType": {
-				"$ref": "#/components/schemas/ReturnType_typeofauthLoginResponseSchema.parse_"
-			},
-			"ApiResponse_AuthLoginResponseType_": {
-				"properties": {
-					"status": {
-						"$ref": "#/components/schemas/ResponseStatus"
-					},
-					"message": {
-						"type": "string"
-					},
-					"data": {
-						"$ref": "#/components/schemas/AuthLoginResponseType"
-					}
-				},
-				"required": [
-					"status",
-					"message"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ReturnType_typeofauthLoginRequestSchema.parse_": {
-				"properties": {
-					"password": {
-						"type": "string"
-					},
-					"email": {
-						"type": "string"
-					}
-				},
-				"type": "object",
-				"description": "Obtain the return type of a function type"
-			},
-			"AuthLoginRequestType": {
-				"$ref": "#/components/schemas/ReturnType_typeofauthLoginRequestSchema.parse_"
-			},
 			"ApiResponse": {
 				"properties": {
 					"status": {
@@ -182,6 +114,24 @@
 			"AuthVerifyType": {
 				"$ref": "#/components/schemas/ReturnType_typeofauthVerifySchema.parse_"
 			},
+			"ReturnType_typeofauthResetPasswordSchema.parse_": {
+				"properties": {
+					"password": {
+						"type": "string"
+					},
+					"otpCode": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"AuthResetPasswordType": {
+				"$ref": "#/components/schemas/ReturnType_typeofauthResetPasswordSchema.parse_"
+			},
 			"ApiPaginatedResponse_Array_UserResponseType__": {
 				"properties": {
 					"status": {
@@ -259,38 +209,6 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/auth/login": {
-			"post": {
-				"operationId": "Login",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ApiResponse_AuthLoginResponseType_"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Auth"
-				],
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/AuthLoginRequestType"
-							}
-						}
-					}
-				}
-			}
-		},
 		"/auth/signup": {
 			"post": {
 				"operationId": "CreateUser",
@@ -356,6 +274,16 @@
 								}
 							}
 						}
+					},
+					"default": {
+						"description": "Error Occured",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						}
 					}
 				},
 				"tags": [
@@ -369,6 +297,98 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/AuthVerifyType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/password/reset": {
+			"post": {
+				"operationId": "InitiatePasswordReset",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						}
+					},
+					"default": {
+						"description": "Error Occured",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/password/reset/verify": {
+			"post": {
+				"operationId": "VerifyPasswordReset",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						}
+					},
+					"default": {
+						"description": "Error Occured",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AuthResetPasswordType"
 							}
 						}
 					}

@@ -19,7 +19,7 @@ app.use(json());
 app.use("/api/docs", swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
     logger.info("Serving Swagger UI");
     return res.send(
-        swaggerUi.generateHTML(await import("../dist/swagger.json"))
+        swaggerUi.generateHTML(await import("./swagger.json"))
     );
 });
 
