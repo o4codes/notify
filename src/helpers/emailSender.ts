@@ -6,7 +6,8 @@ import { Settings, logger } from "../configs";
 const awsConfig = {
     region: Settings.awsRegion,
     accessKeyId: Settings.awsAccessKeyId,
-    secretAccessKey: Settings.awsSecretAccessKey
+    secretAccessKey: Settings.awsSecretAccessKey,
+    endpoint: Settings.awsEndpointURL || undefined,
 }
 
 export interface MailRecipients {
