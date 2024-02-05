@@ -50,7 +50,7 @@ export class UserSecurityKeysEntity extends BaseEntity {
         unique: true
     })
     @IsAlphanumeric()
-    public_key: string;
+    publicKey: string;
 
     @Column({
         type: "varchar",
@@ -58,6 +58,6 @@ export class UserSecurityKeysEntity extends BaseEntity {
         unique: true
     })
     @IsAlphanumeric()
-    secret_key: string;
+    secretKey: string;
 
 }

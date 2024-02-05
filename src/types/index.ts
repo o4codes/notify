@@ -1,5 +1,6 @@
-import { UserCreateType, UserUpdateType, UserResponseType, PaginatedUserResponseType } from "./user";
+import { UserCreateType, UserUpdateType, UserResponseType, PaginatedUserResponseType, UserSecurityKeysType } from "./user";
 import { AuthLoginRequestType, AuthLoginResponseType, AuthVerifyType, AuthResetPasswordType } from "./auth";
+import { UserMessageConfigType } from "./message_configs"; 
 
 export {
     UserCreateType,
@@ -9,5 +10,7 @@ export {
     AuthLoginRequestType,
     AuthLoginResponseType,
     AuthVerifyType,
-    AuthResetPasswordType
+    AuthResetPasswordType,
+    UserMessageConfigType,
+    UserSecurityKeysType
 }

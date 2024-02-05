@@ -17,3 +17,11 @@ export const userSchema = z.object({
 export const userCreateSchema = userSchema.omit({ id: true, createdDateTime: true, updatedDateTime: true });
 export const userUpdateSchema = userCreateSchema.optional();
 export const userResponseSchema = userSchema.omit({ password: true });
+
+
+export const userSecurityKeysSchema = z.object({
+    publicKey: z.string(),
+    secretKey: z.string(),
+    createdDateTime: z.date(),
+    updatedDateTime: z.date().nullish(),
+});
