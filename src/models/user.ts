@@ -1,6 +1,7 @@
 import { Entity, Column, OneToOne, JoinColumn, Or } from 'typeorm';
 import { IsAlphanumeric, IsBoolean, IsEmail, IsString } from 'class-validator'
 import { BaseEntity } from './commons';
+import { MessageConfiguration } from './message_configs';
 
 
 @Entity("users")
@@ -29,20 +30,23 @@ export class UserEntity extends BaseEntity {
     password: string;
 
     @OneToOne(() => UserSecurityKeysEntity, (security_keys) => security_keys.user)
-    security_keys: UserSecurityKeysEntity;
+    securityKeys: UserSecurityKeysEntity;
+
+    @OneToOne(() => MessageConfiguration, (message_configs) => message_configs.user)
+    messageConfig: MessageConfiguration;
 }
 
 
 @Entity("user_security_keys")
 export class UserSecurityKeysEntity extends BaseEntity {
 
-    @OneToOne(() => UserEntity, (user) => user.security_keys)
+    @OneToOne(() => UserEntity, (user) => user.securityKeys)
     @JoinColumn()
     user: UserEntity;
 
     @Column({
         type: "varchar",
-        length: 250,
+        length: 256,
         unique: true
     })
     @IsAlphanumeric()
@@ -50,7 +54,7 @@ export class UserSecurityKeysEntity extends BaseEntity {
 
     @Column({
         type: "varchar",
-        length: 250,
+        length: 256,
         unique: true
     })
     @IsAlphanumeric()
