@@ -1,7 +1,6 @@
 import { Entity, Column, OneToOne, JoinColumn, Or } from 'typeorm';
-import { IsAlphanumeric, IsBoolean, IsEmail, IsString } from 'class-validator'
+import { IsAlphanumeric, IsBoolean, IsEmail, IsNumberString, IsString } from 'class-validator'
 import { BaseEntity } from './commons';
-import { MessageConfiguration } from './message_configs';
 
 
 @Entity("users")
@@ -32,8 +31,8 @@ export class UserEntity extends BaseEntity {
     @OneToOne(() => UserSecurityKeysEntity, (security_keys) => security_keys.user)
     securityKeys: UserSecurityKeysEntity;
 
-    @OneToOne(() => MessageConfiguration, (message_configs) => message_configs.user)
-    messageConfig: MessageConfiguration;
+    @OneToOne(() => UserMessageConfiguration, (message_configs) => message_configs.user)
+    messageConfig: UserMessageConfiguration;
 }
 
 
@@ -59,5 +58,40 @@ export class UserSecurityKeysEntity extends BaseEntity {
     })
     @IsAlphanumeric()
     secretKey: string;
+}
 
+
+@Entity("message_configurations")
+export class UserMessageConfiguration extends BaseEntity {
+    
+    @OneToOne(() => UserEntity, user => user.messageConfig)
+    @JoinColumn()
+    user: UserEntity;
+
+    @Column({
+        type: "varchar",
+        unique: true,
+        length: 128,
+        nullable: true
+    })
+    @IsEmail()
+    sourceEmailAddress: string;
+
+    @Column({
+        type: "varchar",
+        unique: true,
+        length: 128,
+        nullable: true
+    })
+    @IsNumberString()
+    sourceMobileNumber: string;
+
+    @Column({
+            type: "varchar",
+            unique: true,
+            length: 256,
+            nullable: true
+    })
+    @IsString()
+    fcmToken: string;
 }

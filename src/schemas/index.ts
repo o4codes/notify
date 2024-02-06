@@ -1,7 +1,6 @@
 import { ApiPaginatedResponse, ApiResponse, ResponseStatus } from "./commons";
 import { authLoginRequestSchema, authLoginResponseSchema, authVerifySchema, authResetPasswordSchema } from "./auth";
-import { userCreateSchema, userResponseSchema, userUpdateSchema, userSecurityKeysSchema  } from "./user";
-import { userMessageConfigSchema } from "./message_configs"; 
+import { userCreateSchema, userResponseSchema, userUpdateSchema, userSecurityKeysSchema, userMessageConfigSchema  } from "./user";
 
 export {
     ApiPaginatedResponse,

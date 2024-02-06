@@ -1,3 +1,3 @@
-import { UserEntity, UserSecurityKeysEntity } from './user';
+import { UserEntity, UserSecurityKeysEntity, UserMessageConfiguration } from './user';
 
-export { UserEntity, UserSecurityKeysEntity }
+export { UserEntity, UserSecurityKeysEntity, UserMessageConfiguration }
